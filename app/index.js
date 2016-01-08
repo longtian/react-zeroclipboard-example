@@ -11,7 +11,7 @@ const textToBeCopied = "jellyfish";
 render(<div>
   <h3>Example:</h3>
   <h5>1. Click COPY Button</h5>
-  <CopyButton data={textToBeCopied}/>
+  <CopyButton data-clipboard-text={textToBeCopied}>Click to copy</CopyButton>
   <h5>2. Paste below to check against {textToBeCopied}</h5>
   <textarea/>
 </div>, document.getElementById('root'));
