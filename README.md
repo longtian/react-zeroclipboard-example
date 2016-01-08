@@ -11,21 +11,19 @@ This example assumes you have working experience with these tools or frameworks
 * Webpack
 * ZeroClipboard
 
-## The APP
-
-The application will be written in ES6, and we will use Babel to compile it to ES5. Webpack comes in handy to make this workflow automated.
+The code base is written in ES6, and we will use Babel to compile it to ES5. Webpack comes in handy to make this workflow automated.
 
 ### Install ZeroClipboard
 
 ZeroClipboard can be easily installed using NPM.
 
 ```sh
-npm install zeroclipboard
+npm install zeroclipboard -D
 ```
 
 ### Import ZeroClipboad
 
-After installing it, it can be imported just like other modules.
+After installing it, it can be imported just like importing other modules.
 
 ```js
 import React from 'react';
@@ -60,7 +58,7 @@ After the package is built and deployed, you will most likely run into this prob
 **The SWF file is not found**, you can mannually copy this file into your static server and make sure the path is correct.
 But you need to do this everytime after you do a fresh deployment. Let's solve the problem using webpack.
 
-First, we need to config the ZeroClipboard's `swfPath` option.
+First, we need to config the ZeroClipboard's `swfPath` option:
 
 ```
 ZeroClipboard.config({
@@ -68,8 +66,10 @@ ZeroClipboard.config({
 });
 ```
 
-This code looks very strange because a swf file is `required`. Unless, the second step, we tell webpack how to deal with
-.swf files. We need a loader which will simply copy required dependencies which ends with `.swf` to the webpack output path.
+This piece of code looks very strange because a `.swf` file is `required`. Unless, the second step, we tell webpack how to deal with
+`.swf` files. We need a [loader](http://webpack.github.io/docs/using-loaders.html) which will simply copy required dependencies which
+ends with `.swf` to the webpack output path. This loader can be installed by typing `npm install file-loader -D`. Last, we change the
+`module.loaders` part in `webpack.config.js` to:
 
 ```js
 {
@@ -81,5 +81,5 @@ This code looks very strange because a swf file is `required`. Unless, the secon
 ### Close
 
 In this example, we build a React application which integrates ZeroClipboard. The application is written in ES6
-and compiled to ES5 using webpack. In order to solve the .swf 404 not found problem smartly, we use a webpack loader
-plugin called `file-loader`.
+and compiled to ES5 using webpack. In order to solve the `ZeroClipboard.swf` 404 not found problem smartly, we use a
+webpack loader called `file-loader`.
