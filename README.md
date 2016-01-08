@@ -13,6 +13,11 @@ This example assumes you have working experience with these tools or frameworks
 
 The code base is written in ES6, and we will use Babel to compile it to ES5. Webpack comes in handy to make this workflow automated.
 
+
+### Demo
+
+[http://wyvernnot.github.io/react-zeroclipboard-example/](http://wyvernnot.github.io/react-zeroclipboard-example/)
+
 ### Install ZeroClipboard
 
 ZeroClipboard can be easily installed using NPM.
